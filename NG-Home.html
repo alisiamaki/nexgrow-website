@@ -1,0 +1,1545 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>NEXGROW Academy | Shaping the Future of Mining & Infrastructure</title>
+<meta name="description" content="Industry-led learning that develops skills, builds real capability, and strengthens professional judgment in mining and infrastructure." />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet" />
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  :root {
+    --teal-deep:  #005F5F;
+    --teal-dark:  #007A7A;
+    --teal-mid:   #38B2AC;
+    --teal-light: #38B2AC;
+    --coral:      #D4603A;
+    --coral-dark: #b84e2d;
+    --bg:         #f7f9f9;
+    --bg-2:       #ffffff;
+    --bg-3:       #edf4f4;
+    --text:       #0c1e1e;
+    --text-muted: #3d5c5c;
+    --text-dim:   #7aa0a0;
+    --border:     rgba(0,95,95,0.13);
+    --border-teal:rgba(0,95,95,0.28);
+    --font-display:'Playfair Display', Georgia, serif;
+    --font-body:  'DM Sans', system-ui, sans-serif;
+    --radius:     12px;
+    --radius-sm:  8px;
+    --max:        1200px;
+  }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    font-family: var(--font-body);
+    background: var(--bg);
+    color: var(--text);
+    line-height: 1.7;
+    font-size: 16px;
+    overflow-x: hidden;
+  }
+
+  /* ── UTILITY ── */
+  .container { max-width: var(--max); margin: 0 auto; padding: 0 2rem; }
+  .section { padding: 100px 0; }
+  .section--tight { padding: 72px 0; }
+  .tag {
+    display: inline-block;
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--teal-dark);
+    margin-bottom: 1rem;
+  }
+  .tag::before { content: '— '; opacity: 0.4; }
+  .section-title {
+    font-family: var(--font-display);
+    font-size: clamp(2rem, 4vw, 3rem);
+    font-weight: 600;
+    line-height: 1.2;
+    color: var(--text);
+    margin-bottom: 1.25rem;
+  }
+  .section-subtitle {
+    font-size: 1.05rem;
+    color: var(--text-muted);
+    max-width: 560px;
+    line-height: 1.75;
+  }
+  .btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    font-family: var(--font-body);
+    font-size: 14px;
+    font-weight: 600;
+    letter-spacing: 0.02em;
+    padding: 14px 28px;
+    border-radius: 6px;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    text-decoration: none;
+    border: none;
+  }
+  .btn-primary {
+    background: var(--coral);
+    color: #fff;
+  }
+  .btn-primary:hover { background: var(--coral-dark); transform: translateY(-1px); }
+  .btn-outline {
+    background: transparent;
+    color: var(--text);
+    border: 1px solid var(--border);
+  }
+  .btn-outline:hover { border-color: var(--teal-light); color: var(--teal-light); }
+
+  /* ── NAVBAR ── */
+  nav {
+    position: fixed;
+    top: 0; left: 0; right: 0;
+    z-index: 100;
+    padding: 0 2rem;
+    transition: background 0.3s ease, border-color 0.3s ease;
+    border-bottom: 1px solid transparent;
+  }
+  nav.scrolled {
+    background: rgba(247, 249, 249, 0.95);
+    backdrop-filter: blur(12px);
+    border-color: var(--border);
+  }
+  .nav-inner {
+    max-width: var(--max);
+    margin: 0 auto;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    height: 72px;
+  }
+  .nav-logo {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    text-decoration: none;
+  }
+  .nav-logo-sub {
+    font-family: var(--font-body);
+    font-size: 10px;
+    font-weight: 500;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--text-muted);
+  }
+  .nav-links {
+    display: flex;
+    align-items: center;
+    gap: 2rem;
+    list-style: none;
+  }
+  .nav-links a {
+    font-size: 14px;
+    font-weight: 500;
+    color: var(--text-muted);
+    text-decoration: none;
+    transition: color 0.2s;
+  }
+  .nav-links a:hover { color: var(--teal-dark); }
+  .nav-logo-mark {
+    width: 36px; height: 36px;
+    background: var(--teal-dark);
+    border-radius: 8px;
+    display: flex; align-items: center; justify-content: center;
+    font-family: var(--font-display);
+    font-size: 14px;
+    font-weight: 700;
+    color: #fff;
+    letter-spacing: -0.03em;
+  }
+  .nav-dropdown { position: relative; }
+  .nav-dropdown-menu {
+    position: absolute;
+    top: calc(100% + 12px);
+    left: 50%;
+    transform: translateX(-50%);
+    background: var(--bg-3);
+    border: 1px solid var(--border);
+    border-radius: var(--radius-sm);
+    padding: 8px;
+    min-width: 220px;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.2s;
+  }
+  .nav-dropdown:hover .nav-dropdown-menu { opacity: 1; pointer-events: all; }
+  .nav-dropdown-menu a {
+    display: block;
+    padding: 10px 14px;
+    border-radius: 6px;
+    font-size: 13px;
+    transition: background 0.15s;
+  }
+  .nav-dropdown-menu a:hover { background: var(--border); color: var(--text); }
+  .nav-cta {
+    background: var(--coral);
+    color: #fff !important;
+    padding: 10px 20px;
+    border-radius: 6px;
+    font-weight: 600 !important;
+    transition: background 0.2s !important;
+  }
+  .nav-cta:hover { background: var(--coral-dark) !important; }
+  .nav-hamburger {
+    display: none;
+    flex-direction: column;
+    gap: 5px;
+    cursor: pointer;
+    padding: 4px;
+    background: none;
+    border: none;
+  }
+  .nav-hamburger span {
+    display: block;
+    width: 22px; height: 2px;
+    background: var(--text);
+    border-radius: 2px;
+    transition: all 0.3s;
+  }
+  .mobile-menu {
+    display: none;
+    position: fixed;
+    top: 72px; left: 0; right: 0;
+    background: var(--bg-2);
+    border-bottom: 1px solid var(--border);
+    padding: 1.5rem 2rem;
+    z-index: 99;
+  }
+  .mobile-menu.open { display: block; }
+  .mobile-menu a {
+    display: block;
+    padding: 12px 0;
+    border-bottom: 1px solid var(--border);
+    color: var(--text-muted);
+    text-decoration: none;
+    font-size: 15px;
+  }
+  .mobile-menu a:last-child { border: none; }
+
+  /* ── HERO ── */
+  .hero {
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    position: relative;
+    overflow: hidden;
+    padding-top: 72px;
+  }
+  .hero-bg {
+    position: absolute;
+    inset: 0;
+    background:
+      radial-gradient(ellipse 80% 60% at 65% 50%, rgba(0,95,95,0.08) 0%, transparent 60%),
+      radial-gradient(ellipse 50% 50% at 20% 80%, rgba(231,111,81,0.05) 0%, transparent 50%);
+  }
+  .hero-grid-lines {
+    position: absolute;
+    inset: 0;
+    background-image:
+      linear-gradient(rgba(0,95,95,0.06) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(0,95,95,0.06) 1px, transparent 1px);
+    background-size: 60px 60px;
+  }
+  .hero-content {
+    position: relative;
+    z-index: 2;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 4rem;
+    align-items: center;
+    width: 100%;
+    max-width: var(--max);
+    margin: 0 auto;
+    padding: 80px 2rem;
+  }
+  .hero-eyebrow {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin-bottom: 1.5rem;
+  }
+  .hero-badge {
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--teal-dark);
+    background: rgba(0,95,95,0.08);
+    border: 1px solid rgba(0,95,95,0.2);
+    padding: 5px 12px;
+    border-radius: 100px;
+  }
+  .hero-line { width: 40px; height: 1px; background: var(--teal-dark); }
+  .hero-title {
+    font-family: var(--font-display);
+    font-size: clamp(2.6rem, 5.5vw, 4.2rem);
+    font-weight: 600;
+    line-height: 1.12;
+    color: var(--text);
+    margin-bottom: 1.5rem;
+  }
+  .hero-title em {
+    font-style: italic;
+    color: var(--teal-light);
+  }
+  .hero-desc {
+    font-size: 1.1rem;
+    color: var(--text-muted);
+    line-height: 1.8;
+    margin-bottom: 2.5rem;
+    max-width: 480px;
+  }
+  .hero-actions { display: flex; gap: 1rem; flex-wrap: wrap; }
+  .hero-stats {
+    display: flex;
+    gap: 2rem;
+    margin-top: 3rem;
+    padding-top: 2rem;
+    border-top: 1px solid var(--border);
+  }
+  .hero-stat-num {
+    font-family: var(--font-display);
+    font-size: 1.75rem;
+    font-weight: 600;
+    color: var(--text);
+  }
+  .hero-stat-num span { color: var(--coral); }
+  .hero-stat-label { font-size: 12px; color: var(--text-muted); margin-top: 2px; }
+  .hero-visual {
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  .hero-card-stack {
+    position: relative;
+    width: 100%;
+    max-width: 440px;
+  }
+  .hero-card {
+    background: #fff;
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    padding: 1.5rem;
+    position: relative;
+    box-shadow: 0 4px 24px rgba(0,95,95,0.08);
+  }
+  .hero-card-main {
+    z-index: 3;
+  }
+  .hero-card-behind {
+    position: absolute;
+    width: 90%;
+    left: 5%;
+    border-radius: var(--radius);
+    border: 1px solid var(--border);
+    background: #eef4f4;
+  }
+  .hero-card-behind-1 { bottom: -14px; z-index: 1; height: 50px; }
+  .hero-card-behind-2 { bottom: -26px; z-index: 0; height: 50px; opacity: 0.5; }
+  .card-course-tag {
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--teal-dark);
+    margin-bottom: 0.75rem;
+  }
+  .card-course-title {
+    font-family: var(--font-display);
+    font-size: 1.15rem;
+    font-weight: 600;
+    color: var(--text);
+    margin-bottom: 0.5rem;
+    line-height: 1.3;
+  }
+  .card-course-meta {
+    font-size: 13px;
+    color: var(--text-muted);
+    margin-bottom: 1.25rem;
+  }
+  .card-progress-label {
+    display: flex;
+    justify-content: space-between;
+    font-size: 12px;
+    color: var(--text-muted);
+    margin-bottom: 6px;
+  }
+  .card-progress-bar {
+    height: 4px;
+    background: var(--border);
+    border-radius: 2px;
+    overflow: hidden;
+    margin-bottom: 1.25rem;
+  }
+  .card-progress-fill {
+    height: 100%;
+    background: linear-gradient(90deg, var(--teal-deep), var(--teal-mid));
+    border-radius: 2px;
+    width: 68%;
+    animation: progressIn 1.4s ease 0.5s both;
+  }
+  @keyframes progressIn { from { width: 0; } to { width: 68%; } }
+  .card-avatars { display: flex; align-items: center; gap: 8px; }
+  .card-avatar {
+    width: 28px; height: 28px;
+    border-radius: 50%;
+    border: 2px solid var(--bg-2);
+    margin-left: -8px;
+    font-size: 10px;
+    font-weight: 600;
+    display: flex; align-items: center; justify-content: center;
+  }
+  .card-avatar:first-child { margin-left: 0; }
+  .card-avatar-a { background: rgba(0,95,95,0.5); color: var(--teal-light); }
+  .card-avatar-b { background: rgba(231,111,81,0.5); color: #f0a090; }
+  .card-avatar-c { background: rgba(56,178,172,0.2); color: var(--teal-light); }
+  .card-avatar-more { background: var(--bg-3); color: var(--text-muted); }
+  .card-avatar-text { font-size: 12px; color: var(--text-muted); }
+
+  /* ── VALUE PROPS ── */
+  .value-section { background: var(--bg-3); }
+  .value-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1px;
+    background: var(--border);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    overflow: hidden;
+    margin-top: 4rem;
+  }
+  .value-card {
+    background: #fff;
+    padding: 2.5rem;
+    position: relative;
+    transition: background 0.25s;
+  }
+  .value-card:hover { background: #f0f8f8; }
+  .value-num {
+    font-family: var(--font-display);
+    font-size: 3.5rem;
+    font-weight: 400;
+    color: rgba(0,95,95,0.08);
+    line-height: 1;
+    margin-bottom: 1.5rem;
+    user-select: none;
+  }
+  .value-icon {
+    width: 40px; height: 40px;
+    background: rgba(0,95,95,0.15);
+    border: 1px solid var(--border-teal);
+    border-radius: 8px;
+    display: flex; align-items: center; justify-content: center;
+    margin-bottom: 1.25rem;
+    font-size: 18px;
+  }
+  .value-title {
+    font-family: var(--font-display);
+    font-size: 1.2rem;
+    font-weight: 600;
+    color: var(--text);
+    margin-bottom: 0.75rem;
+    line-height: 1.3;
+  }
+  .value-desc {
+    font-size: 14px;
+    color: var(--text-muted);
+    line-height: 1.75;
+  }
+
+  /* ── WHY WE EXIST ── */
+  .why-inner {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 5rem;
+    align-items: center;
+  }
+  .why-accent {
+    width: 48px; height: 3px;
+    background: var(--coral);
+    margin-bottom: 1.5rem;
+    border-radius: 2px;
+  }
+  .why-body {
+    font-size: 1.05rem;
+    color: var(--text-muted);
+    line-height: 1.85;
+    margin-bottom: 1.5rem;
+  }
+  .why-visual {
+    background: var(--bg-2);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    padding: 2.5rem;
+    position: relative;
+    overflow: hidden;
+  }
+  .why-visual::before {
+    content: '';
+    position: absolute;
+    top: -1px; left: -1px; right: -1px;
+    height: 3px;
+    background: linear-gradient(90deg, var(--teal-deep), var(--teal-mid));
+  }
+  .why-quote {
+    font-family: var(--font-display);
+    font-size: 1.35rem;
+    font-weight: 500;
+    font-style: italic;
+    color: var(--text);
+    line-height: 1.5;
+    margin-bottom: 1.5rem;
+  }
+  .why-quote-attr {
+    font-size: 13px;
+    color: var(--text-muted);
+    letter-spacing: 0.05em;
+  }
+  .why-metrics {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1px;
+    background: var(--border);
+    border-top: 1px solid var(--border);
+    margin-top: 2rem;
+  }
+  .why-metric {
+    background: var(--bg-2);
+    padding: 1.25rem;
+    text-align: center;
+  }
+  .why-metric-num {
+    font-family: var(--font-display);
+    font-size: 1.75rem;
+    font-weight: 600;
+    color: var(--teal-light);
+  }
+  .why-metric-label { font-size: 12px; color: var(--text-muted); margin-top: 4px; }
+
+  /* ── COURSES ── */
+  .courses-header {
+    display: flex;
+    align-items: flex-end;
+    justify-content: space-between;
+    margin-bottom: 3rem;
+    gap: 2rem;
+  }
+  .courses-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1.5rem;
+  }
+  .course-card {
+    background: var(--bg-2);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    overflow: hidden;
+    text-decoration: none;
+    display: flex;
+    flex-direction: column;
+    transition: border-color 0.25s, transform 0.25s;
+    position: relative;
+  }
+  .course-card:hover {
+    border-color: var(--teal-dark);
+    transform: translateY(-4px);
+  }
+  .course-img {
+    height: 180px;
+    background: var(--bg-3);
+    position: relative;
+    overflow: hidden;
+    display: flex; align-items: center; justify-content: center;
+  }
+  .course-img-icon { font-size: 3rem; opacity: 0.4; }
+  .course-img-gradient {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(135deg, rgba(0,95,95,0.3) 0%, rgba(0,0,0,0) 60%);
+  }
+  .course-status {
+    position: absolute;
+    top: 12px; right: 12px;
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    padding: 4px 10px;
+    border-radius: 100px;
+  }
+  .status-open { background: rgba(0,95,95,0.25); color: var(--teal-light); border: 1px solid rgba(56,178,172,0.2); }
+  .status-soon { background: rgba(231,111,81,0.15); color: #f0956b; border: 1px solid rgba(231,111,81,0.2); }
+  .status-new { background: rgba(56,178,172,0.1); color: var(--teal-light); border: 1px solid rgba(56,178,172,0.2); }
+  .course-body { padding: 1.75rem; flex: 1; display: flex; flex-direction: column; }
+  .course-cat {
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--teal-light);
+    margin-bottom: 0.6rem;
+  }
+  .course-title {
+    font-family: var(--font-display);
+    font-size: 1.15rem;
+    font-weight: 600;
+    color: var(--text);
+    line-height: 1.3;
+    margin-bottom: 0.75rem;
+  }
+  .course-desc { font-size: 13px; color: var(--text-muted); line-height: 1.7; flex: 1; }
+  .course-footer {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-top: 1.5rem;
+    padding-top: 1.25rem;
+    border-top: 1px solid var(--border);
+  }
+  .course-detail { font-size: 12px; color: var(--text-dim); }
+  .course-link {
+    font-size: 13px;
+    font-weight: 600;
+    color: var(--coral);
+    display: flex; align-items: center; gap: 4px;
+  }
+  .course-card:hover .course-link { gap: 8px; }
+  .course-card:hover .course-link::after { content: ''; }
+
+  /* ── FOUNDING PARTNERS ── */
+  .partners-section { background: var(--bg-3); }
+  .partners-intro {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 4rem;
+    align-items: end;
+    margin-bottom: 4rem;
+  }
+  .partners-body { font-size: 1rem; color: var(--text-muted); line-height: 1.8; margin-top: 1rem; }
+  .partners-cta-block { text-align: right; }
+  .partners-cta-text {
+    font-size: 14px;
+    color: var(--text-muted);
+    margin-bottom: 1rem;
+    line-height: 1.6;
+  }
+  .partner-tier {
+    margin-bottom: 3.5rem;
+  }
+  .partner-tier-label {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    margin-bottom: 1.75rem;
+  }
+  .partner-tier-name {
+    font-size: 12px;
+    font-weight: 600;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--text-muted);
+    white-space: nowrap;
+  }
+  .partner-tier-line {
+    flex: 1;
+    height: 1px;
+    background: var(--border);
+  }
+  .partner-tier-badge {
+    font-size: 10px;
+    font-weight: 600;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    padding: 4px 10px;
+    border-radius: 100px;
+    white-space: nowrap;
+  }
+  .badge-strategic {
+    background: rgba(0,95,95,0.15);
+    color: var(--teal-light);
+    border: 1px solid rgba(56,178,172,0.2);
+  }
+  .badge-course {
+    background: rgba(231,111,81,0.12);
+    color: #f0956b;
+    border: 1px solid rgba(231,111,81,0.2);
+  }
+  .partners-grid-strategic {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1.25rem;
+  }
+  .partners-grid-course {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 1rem;
+  }
+  .partner-card {
+    background: var(--bg);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    padding: 1.75rem 1.5rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    gap: 0.75rem;
+    transition: border-color 0.2s, background 0.2s;
+    min-height: 130px;
+  }
+  .partner-card:hover {
+    border-color: var(--teal-dark);
+    background: var(--bg-2);
+  }
+  .partner-card-sm {
+    padding: 1.25rem 1rem;
+    min-height: 100px;
+  }
+  .partner-logo-placeholder {
+    width: 48px; height: 48px;
+    border-radius: 10px;
+    background: rgba(0,95,95,0.12);
+    border: 1px solid var(--border-teal);
+    display: flex; align-items: center; justify-content: center;
+    font-size: 16px;
+    font-weight: 700;
+    color: var(--teal-light);
+    font-family: var(--font-display);
+  }
+  .partner-logo-placeholder-sm { width: 36px; height: 36px; font-size: 13px; border-radius: 8px; }
+  .partner-name {
+    font-size: 13px;
+    font-weight: 600;
+    color: var(--text);
+    line-height: 1.3;
+  }
+  .partner-role {
+    font-size: 11px;
+    color: var(--text-muted);
+    line-height: 1.5;
+  }
+  .partner-card-add {
+    background: transparent;
+    border: 1px dashed rgba(255,255,255,0.12);
+    color: var(--text-dim);
+    cursor: pointer;
+  }
+  .partner-card-add:hover { border-color: var(--teal-dark); color: var(--teal-light); background: rgba(0,95,95,0.05); }
+  .partner-add-icon { font-size: 20px; margin-bottom: 4px; }
+  .partner-add-text { font-size: 12px; line-height: 1.4; }
+
+  /* ── INSIGHTS / BLOG ── */
+  .insights-header {
+    display: flex;
+    align-items: flex-end;
+    justify-content: space-between;
+    margin-bottom: 3rem;
+    gap: 2rem;
+  }
+  .insights-grid {
+    display: grid;
+    grid-template-columns: 1.4fr 1fr 1fr;
+    gap: 1.25rem;
+  }
+  .insight-card {
+    background: var(--bg-2);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    padding: 1.75rem;
+    text-decoration: none;
+    display: flex;
+    flex-direction: column;
+    transition: border-color 0.2s, transform 0.2s;
+  }
+  .insight-card:hover { border-color: var(--teal-dark); transform: translateY(-3px); }
+  .insight-cat {
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--coral);
+    margin-bottom: 0.75rem;
+  }
+  .insight-title {
+    font-family: var(--font-display);
+    font-size: 1.1rem;
+    font-weight: 600;
+    color: var(--text);
+    line-height: 1.35;
+    margin-bottom: 0.75rem;
+    flex: 1;
+  }
+  .insight-card--featured .insight-title { font-size: 1.4rem; }
+  .insight-meta { font-size: 12px; color: var(--text-dim); margin-top: 1.25rem; }
+  .insight-featured-tag {
+    display: inline-block;
+    font-size: 10px;
+    font-weight: 600;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--teal-light);
+    background: rgba(56,178,172,0.1);
+    border: 1px solid rgba(56,178,172,0.2);
+    padding: 3px 8px;
+    border-radius: 100px;
+    margin-bottom: 1rem;
+  }
+
+  /* ── MOVEMENT CTA ── */
+  .movement {
+    background: var(--teal-deep);
+    position: relative;
+    overflow: hidden;
+  }
+  .movement::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: radial-gradient(ellipse 70% 70% at 80% 50%, rgba(56,178,172,0.12) 0%, transparent 60%);
+  }
+  .movement-inner {
+    position: relative;
+    z-index: 2;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 4rem;
+    align-items: center;
+  }
+  .movement .tag { color: var(--teal-light); }
+  .movement .section-title { color: #fff; }
+  .movement-word {
+    font-family: var(--font-display);
+    font-size: clamp(4rem, 10vw, 8rem);
+    font-weight: 700;
+    line-height: 1;
+    color: rgba(255,255,255,0.05);
+    position: absolute;
+    right: -20px; bottom: -20px;
+    user-select: none;
+    letter-spacing: -0.04em;
+  }
+  .movement-features { list-style: none; margin: 1.75rem 0 2rem; }
+  .movement-features li {
+    display: flex;
+    align-items: flex-start;
+    gap: 12px;
+    padding: 12px 0;
+    border-bottom: 1px solid rgba(255,255,255,0.1);
+    font-size: 14px;
+    color: rgba(255,255,255,0.75);
+  }
+  .movement-features li:last-child { border: none; }
+  .movement-check {
+    width: 20px; height: 20px;
+    background: rgba(56,178,172,0.2);
+    border: 1px solid rgba(56,178,172,0.4);
+    border-radius: 50%;
+    display: flex; align-items: center; justify-content: center;
+    flex-shrink: 0;
+    margin-top: 1px;
+    font-size: 11px;
+    color: var(--teal-light);
+  }
+  .movement-visual {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+  }
+  .movement-stat-card {
+    background: rgba(255,255,255,0.07);
+    border: 1px solid rgba(255,255,255,0.12);
+    border-radius: var(--radius);
+    padding: 1.5rem 2rem;
+    display: flex;
+    align-items: center;
+    gap: 1.5rem;
+  }
+  .movement-stat-icon {
+    width: 44px; height: 44px;
+    background: rgba(56,178,172,0.15);
+    border: 1px solid rgba(56,178,172,0.3);
+    border-radius: 10px;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 20px;
+    flex-shrink: 0;
+  }
+  .movement-stat-num {
+    font-family: var(--font-display);
+    font-size: 1.5rem;
+    font-weight: 600;
+    color: #fff;
+  }
+  .movement-stat-label { font-size: 12px; color: rgba(255,255,255,0.6); }
+
+  /* ── NEWSLETTER ── */
+  .newsletter-inner {
+    max-width: 620px;
+    margin: 0 auto;
+    text-align: center;
+  }
+  .newsletter-form {
+    display: flex;
+    gap: 0.75rem;
+    margin-top: 2rem;
+    flex-wrap: wrap;
+  }
+  .newsletter-input {
+    flex: 1;
+    min-width: 220px;
+    background: var(--bg-2);
+    border: 1px solid var(--border);
+    border-radius: 6px;
+    padding: 14px 18px;
+    font-family: var(--font-body);
+    font-size: 14px;
+    color: var(--text);
+    outline: none;
+    transition: border-color 0.2s;
+  }
+  .newsletter-input:focus { border-color: var(--teal-dark); }
+  .newsletter-input::placeholder { color: var(--text-dim); }
+  .newsletter-note { font-size: 12px; color: var(--text-dim); margin-top: 0.75rem; }
+
+  /* ── FOOTER ── */
+  footer {
+    background: var(--teal-deep);
+    border-top: none;
+    padding: 4rem 0 2rem;
+  }
+  .footer-grid {
+    display: grid;
+    grid-template-columns: 2fr 1fr 1fr 1fr;
+    gap: 3rem;
+    margin-bottom: 3rem;
+  }
+  .footer-brand-desc {
+    font-size: 14px;
+    color: rgba(255,255,255,0.58);
+    line-height: 1.75;
+    margin-top: 1rem;
+    max-width: 280px;
+  }
+  .footer-tagline {
+    font-size: 12px;
+    color: rgba(255,255,255,0.32);
+    margin-top: 1.25rem;
+    font-style: italic;
+    font-family: var(--font-display);
+  }
+  .footer-col-title {
+    font-size: 12px;
+    font-weight: 600;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: rgba(255,255,255,0.42);
+    margin-bottom: 1.25rem;
+  }
+  .footer-links { list-style: none; display: flex; flex-direction: column; gap: 0.6rem; }
+  .footer-links a {
+    font-size: 14px;
+    color: rgba(255,255,255,0.55);
+    text-decoration: none;
+    transition: color 0.2s;
+  }
+  .footer-links a:hover { color: #fff; }
+  .footer-bottom {
+    border-top: 1px solid rgba(255,255,255,0.1);
+    padding-top: 2rem;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    font-size: 13px;
+    color: rgba(255,255,255,0.32);
+    flex-wrap: wrap;
+    gap: 1rem;
+  }
+  .footer-email { color: var(--teal-mid); text-decoration: none; }
+  .footer-email:hover { text-decoration: underline; }
+
+  /* ── SCROLL ANIMATIONS ── */
+  .reveal {
+    opacity: 0;
+    transform: translateY(24px);
+    transition: opacity 0.65s ease, transform 0.65s ease;
+  }
+  .reveal.in { opacity: 1; transform: none; }
+  .reveal-delay-1 { transition-delay: 0.1s; }
+  .reveal-delay-2 { transition-delay: 0.2s; }
+  .reveal-delay-3 { transition-delay: 0.3s; }
+
+  /* ── RESPONSIVE ── */
+  @media (max-width: 900px) {
+    .hero-content { grid-template-columns: 1fr; gap: 3rem; }
+    .hero-visual { display: none; }
+    .value-grid { grid-template-columns: 1fr; }
+    .why-inner { grid-template-columns: 1fr; gap: 2.5rem; }
+    .courses-grid { grid-template-columns: 1fr; }
+    .courses-header { flex-direction: column; align-items: flex-start; }
+    .partners-intro { grid-template-columns: 1fr; gap: 1.5rem; }
+    .partners-cta-block { text-align: left; }
+    .partners-grid-strategic { grid-template-columns: repeat(2, 1fr); }
+    .partners-grid-course { grid-template-columns: repeat(2, 1fr); }
+    .insights-grid { grid-template-columns: 1fr; }
+    .movement-inner { grid-template-columns: 1fr; gap: 2.5rem; }
+    .footer-grid { grid-template-columns: 1fr 1fr; gap: 2rem; }
+    .nav-links { display: none; }
+    .nav-hamburger { display: flex; }
+    .section { padding: 72px 0; }
+  }
+  @media (max-width: 540px) {
+    .footer-grid { grid-template-columns: 1fr; }
+    .partners-grid-strategic,
+    .partners-grid-course { grid-template-columns: 1fr 1fr; }
+  }
+</style>
+</head>
+<body>
+
+<!-- ══ NAVBAR ══════════════════════════════════════════════════════ -->
+<nav id="navbar">
+  <div class="nav-inner">
+    <a href="/" class="nav-logo">
+      <div class="nav-logo-mark">NX</div>
+      <div>
+        <div class="nav-logo-text">NEXGROW</div>
+        <div class="nav-logo-sub">Academy</div>
+      </div>
+    </a>
+    <ul class="nav-links">
+      <li><a href="/about">About</a></li>
+      <li class="nav-dropdown">
+        <a href="#">Courses ▾</a>
+        <div class="nav-dropdown-menu">
+          <a href="/instrumentation-and-monitoring">Instrumentation & Monitoring</a>
+          <a href="/tailings-management">Tailings Management</a>
+          <a href="/mine-safety">Mine Safety</a>
+        </div>
+      </li>
+      <li class="nav-dropdown">
+        <a href="#">Learning Center ▾</a>
+        <div class="nav-dropdown-menu">
+          <a href="/blog">NEXGROW Blog</a>
+          <a href="/movement-series">Movement Series</a>
+        </div>
+      </li>
+      <li><a href="#partners">Partners</a></li>
+      <li><a href="#newsletter">Contact</a></li>
+      <li><a href="/instrumentation-and-monitoring" class="nav-cta">Enroll Now</a></li>
+    </ul>
+    <button class="nav-hamburger" id="hamburger" aria-label="Menu">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+</nav>
+
+<div class="mobile-menu" id="mobile-menu">
+  <a href="/about">About</a>
+  <a href="/instrumentation-and-monitoring">Instrumentation & Monitoring</a>
+  <a href="/tailings-management">Tailings Management</a>
+  <a href="/mine-safety">Mine Safety</a>
+  <a href="/blog">Blog</a>
+  <a href="/movement-series">Movement Series</a>
+  <a href="#partners">Partners</a>
+  <a href="/instrumentation-and-monitoring" class="btn btn-primary" style="margin-top:1rem;width:100%;justify-content:center;">Enroll Now</a>
+</div>
+
+<!-- ══ HERO ══════════════════════════════════════════════════════════ -->
+<section class="hero">
+  <div class="hero-bg"></div>
+  <div class="hero-grid-lines"></div>
+  <div class="hero-content">
+    <div>
+      <div class="hero-eyebrow">
+        <span class="hero-badge">Industry-Led Learning</span>
+        <span class="hero-line"></span>
+      </div>
+      <h1 class="hero-title">
+        Shaping the Future of <em>Mining & Infrastructure</em>
+      </h1>
+      <p class="hero-desc">
+        Industry-led learning that develops skills, builds real capability, and strengthens professional judgment — designed by practitioners, for practitioners.
+      </p>
+      <div class="hero-actions">
+        <a href="/instrumentation-and-monitoring" class="btn btn-primary">Explore Courses →</a>
+        <a href="#why" class="btn btn-outline">Our Mission</a>
+      </div>
+      <div class="hero-stats">
+        <div>
+          <div class="hero-stat-num">3<span>+</span></div>
+          <div class="hero-stat-label">Courses in Development</div>
+        </div>
+        <div>
+          <div class="hero-stat-num">100<span>%</span></div>
+          <div class="hero-stat-label">Industry-Built Content</div>
+        </div>
+        <div>
+          <div class="hero-stat-num">Global</div>
+          <div class="hero-stat-label">Professional Community</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="hero-visual">
+      <div class="hero-card-stack">
+        <div class="hero-card hero-card-main">
+          <div class="card-course-tag">Waitlist Open — Launching Summer 2025</div>
+          <div class="card-course-title">Ground Truth: Geotechnical Instrumentation & Monitoring</div>
+          <div class="card-course-meta">Certificate Program · Industry Practitioners</div>
+          <div class="card-progress-label">
+            <span>Waitlist Progress</span>
+            <span>68% to capacity</span>
+          </div>
+          <div class="card-progress-bar">
+            <div class="card-progress-fill"></div>
+          </div>
+          <div class="card-avatars">
+            <div class="card-avatar card-avatar-a">JK</div>
+            <div class="card-avatar card-avatar-b">ML</div>
+            <div class="card-avatar card-avatar-c">RT</div>
+            <div class="card-avatar card-avatar-more">+</div>
+            <span class="card-avatar-text" style="margin-left:4px">66 professionals on waitlist</span>
+          </div>
+        </div>
+        <div class="hero-card-behind hero-card-behind-1"></div>
+        <div class="hero-card-behind hero-card-behind-2"></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══ VALUE PROPS ══════════════════════════════════════════════════ -->
+<section class="section value-section">
+  <div class="container">
+    <div class="tag">Why NEXGROW</div>
+    <h2 class="section-title">Not Just Training.<br>Real Capability.</h2>
+    <div class="value-grid">
+      <div class="value-card reveal">
+        <div class="value-num">01</div>
+        <div class="value-icon">⛏</div>
+        <div class="value-title">Industry-Led by Design</div>
+        <p class="value-desc">Courses developed by practitioners actively working in mining and infrastructure — grounded in real projects, real constraints, and real consequences. Not generic instruction.</p>
+      </div>
+      <div class="value-card reveal reveal-delay-1">
+        <div class="value-num">02</div>
+        <div class="value-icon">⚙️</div>
+        <div class="value-title">Skills Applied in Context</div>
+        <p class="value-desc">We go beyond skill acquisition, focusing on how technical knowledge is applied under real constraints, uncertainty, and risk — the kind that can't be taught from a textbook.</p>
+      </div>
+      <div class="value-card reveal reveal-delay-2">
+        <div class="value-num">03</div>
+        <div class="value-icon">🤝</div>
+        <div class="value-title">Credibility Through Partnership</div>
+        <p class="value-desc">We collaborate with industry leaders, operators, and institutions to ensure content reflects current practice, shared standards, and genuine accountability.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══ WHY WE EXIST ══════════════════════════════════════════════════ -->
+<section class="section" id="why">
+  <div class="container">
+    <div class="why-inner">
+      <div>
+        <div class="tag">Our Purpose</div>
+        <h2 class="section-title">Why We Exist</h2>
+        <div class="why-accent"></div>
+        <p class="why-body">As industries evolve, the gap between skills and responsibility continues to grow. Universities teach theory. Job sites demand judgment. The space between them is where careers stall — and where mistakes happen.</p>
+        <p class="why-body">NEXGROW exists to help professionals bridge that gap — by building capability and judgment alongside technical competence, through programs built entirely by the people doing the work.</p>
+        <a href="/about" class="btn btn-outline" style="margin-top:0.5rem;">Read Our Story →</a>
+      </div>
+      <div class="why-visual reveal">
+        <blockquote class="why-quote">"The gap between what universities teach and what the industry actually needs — NEXGROW is where that gap gets closed. By the industry itself."</blockquote>
+        <div class="why-quote-attr">— NEXGROW Academy Mission</div>
+        <div class="why-metrics">
+          <div class="why-metric">
+            <div class="why-metric-num">High-Stakes</div>
+            <div class="why-metric-label">Industries Served</div>
+          </div>
+          <div class="why-metric">
+            <div class="why-metric-num">100%</div>
+            <div class="why-metric-label">Practitioner-Built</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══ COURSES ══════════════════════════════════════════════════════ -->
+<section class="section" id="courses">
+  <div class="container">
+    <div class="courses-header">
+      <div>
+        <div class="tag">Programs</div>
+        <h2 class="section-title">Our Courses</h2>
+      </div>
+      <a href="/courses" class="btn btn-outline">View All Courses →</a>
+    </div>
+    <div class="courses-grid">
+      <a href="/instrumentation-and-monitoring" class="course-card reveal">
+        <div class="course-img">
+          <span class="course-img-icon">📡</span>
+          <div class="course-img-gradient"></div>
+          <span class="course-status status-open">Join Waitlist</span>
+        </div>
+        <div class="course-body">
+          <div class="course-cat">Geotechnical</div>
+          <div class="course-title">Ground Truth: Geotechnical Instrumentation & Monitoring</div>
+          <p class="course-desc">Master monitoring principles, tools, and data interpretation to ensure safer, smarter, and sustainable engineering projects worldwide.</p>
+          <div class="course-footer">
+            <span class="course-detail">Launching Summer 2025 · Certificate</span>
+            <span class="course-link">Join Waitlist →</span>
+          </div>
+        </div>
+      </a>
+
+      <a href="/tailings-management" class="course-card reveal reveal-delay-1">
+        <div class="course-img">
+          <span class="course-img-icon">🏗️</span>
+          <div class="course-img-gradient"></div>
+          <span class="course-status status-soon">Coming Soon</span>
+        </div>
+        <div class="course-body">
+          <div class="course-cat">Risk & Design</div>
+          <div class="course-title">Tailings Management: Risk & Design</div>
+          <p class="course-desc">Learn proactive design, monitoring, and governance strategies to prevent failures and strengthen industry resilience globally.</p>
+          <div class="course-footer">
+            <span class="course-detail">In Development</span>
+            <span class="course-link">Learn More →</span>
+          </div>
+        </div>
+      </a>
+
+      <a href="/mine-safety" class="course-card reveal reveal-delay-2">
+        <div class="course-img">
+          <span class="course-img-icon">⛏️</span>
+          <div class="course-img-gradient"></div>
+          <span class="course-status status-soon">Coming Soon</span>
+        </div>
+        <div class="course-body">
+          <div class="course-cat">Closure & Sustainability</div>
+          <div class="course-title">Responsible Mine Closure</div>
+          <p class="course-desc">Gain practical knowledge on planning, execution, and community impact to close mines responsibly, sustainably, and with stakeholder trust.</p>
+          <div class="course-footer">
+            <span class="course-detail">In Development</span>
+            <span class="course-link">Learn More →</span>
+          </div>
+        </div>
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- ══ FOUNDING PARTNERS ══════════════════════════════════════════════ -->
+<section class="section partners-section" id="partners">
+  <div class="container">
+    <div class="partners-intro">
+      <div>
+        <div class="tag">Founding Partners</div>
+        <h2 class="section-title">Built With<br>Industry Leaders</h2>
+        <p class="partners-body">Our founding partners aren't logo placements — they are the people and organizations shaping what NEXGROW teaches. They bring case studies, expertise, and accountability to every module we build.</p>
+      </div>
+      <div class="partners-cta-block">
+        <p class="partners-cta-text">Interested in co-creating programs that set the standard for the future of industry learning?</p>
+        <a href="mailto:admin@nexgrow.academy" class="btn btn-primary">Become a Partner →</a>
+      </div>
+    </div>
+
+    <!-- Strategic Founding Partners -->
+    <div class="partner-tier reveal">
+      <div class="partner-tier-label">
+        <span class="partner-tier-name">Strategic Founding Partners</span>
+        <span class="partner-tier-line"></span>
+        <span class="partner-tier-badge badge-strategic">Institutional Partners</span>
+      </div>
+      <div class="partners-grid-strategic">
+        <!-- ADD YOUR STRATEGIC PARTNERS BELOW — replace placeholder content -->
+        <div class="partner-card">
+          <div class="partner-logo-placeholder">P1</div>
+          <div class="partner-name">Partner Name</div>
+          <div class="partner-role">Strategic Role / Organization Type</div>
+        </div>
+        <div class="partner-card">
+          <div class="partner-logo-placeholder">P2</div>
+          <div class="partner-name">Partner Name</div>
+          <div class="partner-role">Strategic Role / Organization Type</div>
+        </div>
+        <div class="partner-card">
+          <div class="partner-logo-placeholder">P3</div>
+          <div class="partner-name">Partner Name</div>
+          <div class="partner-role">Strategic Role / Organization Type</div>
+        </div>
+        <div class="partner-card partner-card-add">
+          <div class="partner-add-icon">+</div>
+          <div class="partner-add-text">Become a Strategic Partner</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Course Founding Partners -->
+    <div class="partner-tier reveal">
+      <div class="partner-tier-label">
+        <span class="partner-tier-name">Course Founding Partners</span>
+        <span class="partner-tier-line"></span>
+        <span class="partner-tier-badge badge-course">Knowledge Contributors</span>
+      </div>
+      <div class="partners-grid-course">
+        <!-- ADD YOUR COURSE PARTNERS BELOW -->
+        <div class="partner-card partner-card-sm">
+          <div class="partner-logo-placeholder partner-logo-placeholder-sm">C1</div>
+          <div class="partner-name" style="font-size:12px;">Partner Name</div>
+          <div class="partner-role">Course Specialty</div>
+        </div>
+        <div class="partner-card partner-card-sm">
+          <div class="partner-logo-placeholder partner-logo-placeholder-sm">C2</div>
+          <div class="partner-name" style="font-size:12px;">Partner Name</div>
+          <div class="partner-role">Course Specialty</div>
+        </div>
+        <div class="partner-card partner-card-sm">
+          <div class="partner-logo-placeholder partner-logo-placeholder-sm">C3</div>
+          <div class="partner-name" style="font-size:12px;">Partner Name</div>
+          <div class="partner-role">Course Specialty</div>
+        </div>
+        <div class="partner-card partner-card-sm">
+          <div class="partner-logo-placeholder partner-logo-placeholder-sm">C4</div>
+          <div class="partner-name" style="font-size:12px;">Partner Name</div>
+          <div class="partner-role">Course Specialty</div>
+        </div>
+        <div class="partner-card partner-card-sm">
+          <div class="partner-logo-placeholder partner-logo-placeholder-sm">C5</div>
+          <div class="partner-name" style="font-size:12px;">Partner Name</div>
+          <div class="partner-role">Course Specialty</div>
+        </div>
+        <div class="partner-card partner-card-sm">
+          <div class="partner-logo-placeholder partner-logo-placeholder-sm">C6</div>
+          <div class="partner-name" style="font-size:12px;">Partner Name</div>
+          <div class="partner-role">Course Specialty</div>
+        </div>
+        <div class="partner-card partner-card-sm">
+          <div class="partner-logo-placeholder partner-logo-placeholder-sm">C7</div>
+          <div class="partner-name" style="font-size:12px;">Partner Name</div>
+          <div class="partner-role">Course Specialty</div>
+        </div>
+        <div class="partner-card partner-card-sm partner-card-add">
+          <div class="partner-add-icon">+</div>
+          <div class="partner-add-text">Join as Course Partner</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══ INSIGHTS / BLOG ══════════════════════════════════════════════ -->
+<section class="section" id="insights">
+  <div class="container">
+    <div class="insights-header">
+      <div>
+        <div class="tag">Learning Center</div>
+        <h2 class="section-title">Industry Insights</h2>
+      </div>
+      <a href="/blog" class="btn btn-outline">View All Articles →</a>
+    </div>
+    <div class="insights-grid">
+      <a href="/blog/building-a-safety-culture-in-mining-why-leadership-matters-more-than-rules" class="insight-card insight-card--featured reveal">
+        <span class="insight-featured-tag">Featured</span>
+        <div class="insight-cat">Safety & Leadership</div>
+        <div class="insight-title">Building a Safety Culture in Mining: Why Leadership Matters More Than Rules</div>
+        <p style="font-size:14px;color:var(--text-muted);line-height:1.7;flex:1">Explore why the most effective safety programs are built on leadership behaviour, not compliance checklists — and how to build a culture that truly prevents incidents.</p>
+        <div class="insight-meta">NEXGROW Academy · Mining Safety</div>
+      </a>
+      <a href="/blog/a-practical-guide-to-selecting-geotechnical-data-acquisition-systems" class="insight-card reveal reveal-delay-1">
+        <div class="insight-cat">Geotechnical</div>
+        <div class="insight-title">A Practical Guide to Selecting Geotechnical Data Acquisition Systems</div>
+        <div class="insight-meta">Instrumentation & Monitoring</div>
+      </a>
+      <a href="/blog/the-open-backdoor-is-your-mine-or-infrastructure-hackable" class="insight-card reveal reveal-delay-2">
+        <div class="insight-cat">Technology & Risk</div>
+        <div class="insight-title">The Open Backdoor: Is Your Mine or Infrastructure Hackable?</div>
+        <div class="insight-meta">Cybersecurity in Mining</div>
+      </a>
+      <a href="/blog/the-nervous-system-of-the-mine-a-new-paradigm-for-tailings-storage-facility-tsf-monitoring" class="insight-card reveal">
+        <div class="insight-cat">Tailings</div>
+        <div class="insight-title">The Nervous System of the Mine: A New Paradigm for TSF Monitoring</div>
+        <div class="insight-meta">Tailings Storage Facilities</div>
+      </a>
+      <a href="/blog/from-alarms-to-foresight-how-ai-is-rewriting-the-rules-of-geotechnical-monitoring" class="insight-card reveal reveal-delay-1">
+        <div class="insight-cat">AI & Innovation</div>
+        <div class="insight-title">From Alarms to Foresight: How AI Is Rewriting the Rules of Geotechnical Monitoring</div>
+        <div class="insight-meta">Emerging Technology</div>
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- ══ MOVEMENT CTA ══════════════════════════════════════════════════ -->
+<section class="section movement">
+  <div class="container">
+    <div class="movement-inner">
+      <div>
+        <div class="tag">Community</div>
+        <h2 class="section-title">Join a Movement.<br>Grow with Confidence.</h2>
+        <p style="color:var(--text-muted);line-height:1.8;margin-bottom:0.5rem;">We believe technical professionals deserve more than generic training. NEXGROW is the global platform where you learn with purpose and grow with pride.</p>
+        <ul class="movement-features">
+          <li>
+            <span class="movement-check">✓</span>
+            <span>Access to courses built entirely by working practitioners in your field</span>
+          </li>
+          <li>
+            <span class="movement-check">✓</span>
+            <span>A professional community dedicated to closing the skills gap in high-stakes industries</span>
+          </li>
+          <li>
+            <span class="movement-check">✓</span>
+            <span>Early access to new courses, industry reports, and Movement Series content</span>
+          </li>
+          <li>
+            <span class="movement-check">✓</span>
+            <span>Recognition and credibility through certificate programs vetted by industry</span>
+          </li>
+        </ul>
+        <a href="/instrumentation-and-monitoring" class="btn btn-primary">Join the Movement →</a>
+      </div>
+      <div class="movement-visual reveal">
+        <div class="movement-stat-card">
+          <div class="movement-stat-icon">🌍</div>
+          <div>
+            <div class="movement-stat-num">Global</div>
+            <div class="movement-stat-label">Community of Mining & Infrastructure Professionals</div>
+          </div>
+        </div>
+        <div class="movement-stat-card">
+          <div class="movement-stat-icon">📚</div>
+          <div>
+            <div class="movement-stat-num">100%</div>
+            <div class="movement-stat-label">Content Developed by Active Industry Practitioners</div>
+          </div>
+        </div>
+        <div class="movement-stat-card">
+          <div class="movement-stat-icon">🎓</div>
+          <div>
+            <div class="movement-stat-num">3</div>
+            <div class="movement-stat-label">Professional Certificate Programs — More Coming in 2026</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="movement-word">GROW</div>
+</section>
+
+<!-- ══ NEWSLETTER ══════════════════════════════════════════════════ -->
+<section class="section--tight" id="newsletter">
+  <div class="container">
+    <div class="newsletter-inner">
+      <div class="tag" style="text-align:center;display:block;">Stay Informed</div>
+      <h2 class="section-title" style="text-align:center;">Be First to Know</h2>
+      <p class="section-subtitle" style="color:var(--text-muted);text-align:center;max-width:100%;margin:0 auto;">Get early access to new courses, industry insights, the NEXGROW Movement Series, and exclusive events — delivered to your inbox.</p>
+      <form class="newsletter-form" onsubmit="handleSubscribe(event)">
+        <input type="email" class="newsletter-input" placeholder="your@email.com" required />
+        <button type="submit" class="btn btn-primary">Subscribe →</button>
+      </form>
+      <p class="newsletter-note">No spam. Unsubscribe anytime. We respect your inbox.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ══ FOOTER ══════════════════════════════════════════════════════ -->
+<footer>
+  <div class="container">
+    <div class="footer-grid">
+      <div>
+        <a href="/" class="nav-logo" style="display:inline-flex;">
+          <div class="nav-logo-mark">NX</div>
+          <div>
+            <div class="nav-logo-text" style="color:#fff;">NEXGROW</div>
+            <div class="nav-logo-sub" style="color:rgba(255,255,255,0.45);">Academy</div>
+          </div>
+        </a>
+        <p class="footer-brand-desc">A global platform where mining and infrastructure professionals build real capability, develop sound judgment, and grow with pride.</p>
+        <p class="footer-tagline">Where Expertise Evolves with Dignity.</p>
+      </div>
+      <div>
+        <div class="footer-col-title">Programs</div>
+        <ul class="footer-links">
+          <li><a href="/instrumentation-and-monitoring">Instrumentation & Monitoring</a></li>
+          <li><a href="/tailings-management">Tailings Management</a></li>
+          <li><a href="/mine-safety">Mine Safety</a></li>
+        </ul>
+      </div>
+      <div>
+        <div class="footer-col-title">Learning Center</div>
+        <ul class="footer-links">
+          <li><a href="/blog">NEXGROW Blog</a></li>
+          <li><a href="/movement-series">Movement Series</a></li>
+          <li><a href="/blog/world-tailings-failure">Global Tailings Report</a></li>
+        </ul>
+      </div>
+      <div>
+        <div class="footer-col-title">Company</div>
+        <ul class="footer-links">
+          <li><a href="/about">About Us</a></li>
+          <li><a href="#partners">Partner With Us</a></li>
+          <li><a href="mailto:admin@nexgrow.academy">Contact</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <span>© 2026 NEXGROW Academy. All rights reserved.</span>
+      <a href="mailto:admin@nexgrow.academy" class="footer-email">admin@nexgrow.academy</a>
+    </div>
+  </div>
+</footer>
+
+<script>
+  /* ── Navbar scroll ── */
+  const navbar = document.getElementById('navbar');
+  window.addEventListener('scroll', () => {
+    navbar.classList.toggle('scrolled', window.scrollY > 20);
+  }, { passive: true });
+
+  /* ── Mobile menu ── */
+  const hamburger = document.getElementById('hamburger');
+  const mobileMenu = document.getElementById('mobile-menu');
+  hamburger.addEventListener('click', () => {
+    mobileMenu.classList.toggle('open');
+  });
+
+  /* ── Scroll reveal ── */
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(e => {
+      if (e.isIntersecting) {
+        e.target.classList.add('in');
+        observer.unobserve(e.target);
+      }
+    });
+  }, { threshold: 0.12 });
+  document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+
+  /* ── Newsletter ── */
+  function handleSubscribe(e) {
+    e.preventDefault();
+    const btn = e.target.querySelector('button');
+    btn.textContent = '✓ Subscribed!';
+    btn.style.background = 'var(--teal-dark)';
+    e.target.querySelector('input').value = '';
+    setTimeout(() => { btn.textContent = 'Subscribe →'; btn.style.background = ''; }, 3000);
+  }
+</script>
+
+</body>
+</html>
